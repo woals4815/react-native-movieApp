@@ -1,0 +1,1 @@
+# Movie App made by using React Native
