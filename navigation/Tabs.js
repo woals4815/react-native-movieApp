@@ -34,7 +34,7 @@ export default (props) => {
             iconName += "tv";
           } else if (route.name === "Search") {
             iconName += "search";
-          } else if (route.name === "Favourites") {
+          } else if (route.name === "Discovery") {
             iconName += "heart";
           }
           return (
@@ -57,7 +57,7 @@ export default (props) => {
       <Tabs.Screen name="Movies" component={Movies} />
       <Tabs.Screen name="TV" component={Tv} />
       <Tabs.Screen name="Search" component={Search} />
-      <Tabs.Screen name="Favourites" component={Fav} />
+      <Tabs.Screen name="Discovery" component={Fav} />
     </Tabs.Navigator>
   );
 };
