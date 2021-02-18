@@ -30,5 +30,5 @@ export default () => {
   useEffect(() => {
     getData();
   }, []);
-  return <MoviesPresenter />;
+  return <MoviesPresenter {...movies} />;
 };
