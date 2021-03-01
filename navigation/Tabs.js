@@ -12,7 +12,7 @@ import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 const Tabs = createBottomTabNavigator();
 
 const getHeaderName = (route) => {
-  const routeName = getFocusedRouteNameFromRoute(route) ?? "Movies";
+  const routeName = getFocusedRouteNameFromRoute(route) ?? "TV";
   return routeName; //route?.state?.routeNames[route.state.index] || "Movies"; (temporary solution)
 };
 export default (props) => {
@@ -54,8 +54,8 @@ export default (props) => {
         },
       }}
     >
-      <Tabs.Screen name="Movies" component={Movies} />
       <Tabs.Screen name="TV" component={Tv} />
+      <Tabs.Screen name="Movies" component={Movies} />
       <Tabs.Screen name="Search" component={Search} />
       <Tabs.Screen name="Discovery" component={Fav} />
     </Tabs.Navigator>
