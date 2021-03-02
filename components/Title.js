@@ -9,7 +9,8 @@ const Text = styled.Text`
   margin-left: 30px;
 `;
 
-const Title = ({ title }) => <Text>{title}</Text>;
+const Title = ({ title }) =>
+  title ? <Text>{title}</Text> : <Text>No Title</Text>;
 
 Title.porpTypes = {
   title: PropTypes.string.isRequired,

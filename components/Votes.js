@@ -8,6 +8,11 @@ const Container = styled.Text`
   font-size: 12px;
 `;
 
-const Votes = ({ votes }) => <Container>{votes} / 10</Container>;
+const Votes = ({ votes }) =>
+  votes ? (
+    <Container>🎯 {votes} / 10</Container>
+  ) : (
+    <Container>🎯 No Rating</Container>
+  );
 
 export default Votes;

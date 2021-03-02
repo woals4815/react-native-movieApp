@@ -22,7 +22,7 @@ export default function App() {
   const [isReady, setIsReady] = useState(false);
   const loadAssets = () => {
     const images = cacheImages([
-      "https://www.google.com/imgres?imgurl=https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F770139154898382848%2FndFg-IDH.jpg&imgrefurl=https%3A%2F%2Ftwitter.com%2Fgooglekorea&tbnid=9kjJgom6469U3M&vet=12ahUKEwiyjPa7nebuAhVLTPUHHer9Cc8QMygBegUIARDQAQ..i&docid=guw9br3hJdUmtM&w=500&h=500&q=google&ved=2ahUKEwiyjPa7nebuAhVLTPUHHer9Cc8QMygBegUIARDQAQ",
+      "https://images.unsplash.com/photo-1572177191856-3cde618dee1f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=582&q=80",
       require("./assets/splash.png"),
     ]);
     const fonts = cacheFonts([Ionicons.font]);
