@@ -28,7 +28,7 @@ export const movieApi = {
   popular: () => getData("/movie/popular"),
   upcoming: () => getData("/movie/upcoming", { region: "kr" }),
   search: (query) => getData(`/search/movie`, { query }),
-  movie: (id) => getData(`/movie/${id}`),
+  movie: (id) => getData(`/movie/${id}`, { append_to_response: "videos" }),
   discover: () => getData("/discover/movie"),
 };
 
@@ -38,7 +38,7 @@ export const tvApi = {
   topRated: () => getData("/tv/top_rated"),
   popular: () => getData("/tv/popular"),
   search: (query) => getData("/search/tv", { query }),
-  show: (id) => getData(`/tv/${id}`),
+  show: (id) => getData(`/tv/${id}`, { append_to_response: "videos" }),
 };
 
 export const apiImage = (
