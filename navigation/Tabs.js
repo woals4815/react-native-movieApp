@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Movies from "../screens/Movies";
 import Tv from "../screens/Tv";
 import Search from "../screens/Search";
-import Fav from "../screens/Fav";
+import Fav from "../screens/Favs/FavContainer";
 import { useLayoutEffect } from "react";
 import { Platform } from "react-native";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
@@ -12,7 +12,7 @@ import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 const Tabs = createBottomTabNavigator();
 
 const getHeaderName = (route) => {
-  const routeName = getFocusedRouteNameFromRoute(route) ?? "TV";
+  const routeName = getFocusedRouteNameFromRoute(route) ?? "Favourites";
   return routeName; //route?.state?.routeNames[route.state.index] || "Movies"; (temporary solution)
 };
 export default (props) => {
@@ -54,10 +54,10 @@ export default (props) => {
         },
       }}
     >
+      <Tabs.Screen name="Discovery" component={Fav} />
       <Tabs.Screen name="TV" component={Tv} />
       <Tabs.Screen name="Movies" component={Movies} />
       <Tabs.Screen name="Search" component={Search} />
-      <Tabs.Screen name="Discovery" component={Fav} />
     </Tabs.Navigator>
   );
 };
