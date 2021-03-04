@@ -5,6 +5,7 @@ import ScrollContainer from "../../components/ScrollContainer";
 import styled from "styled-components/native";
 import Votes from "../../components/Votes";
 import { apiImage } from "../../api";
+import { formatDate } from "../../utils";
 
 const BG = styled.Image`
   width: 100%;
@@ -50,7 +51,10 @@ const DataValue = styled.Text`
 `;
 
 export default ({ result, loading }) => (
-  <ScrollContainer loading={false}>
+  <ScrollContainer
+    loading={false}
+    contentContainerStyle={{ paddingBottom: 80 }}
+  >
     <>
       <Header>
         <BG source={{ uri: apiImage(result.backgroundImage, "a") }} />
@@ -77,6 +81,38 @@ export default ({ result, loading }) => (
             <DataName>Language</DataName>
             <DataValue>
               {result.spoken_languages.map((lan) => `${lan.name}  `)}
+            </DataValue>
+          </>
+        )}
+        {result.status && (
+          <>
+            <DataName>📺 Status</DataName>
+            <DataValue>{result.status}</DataValue>
+          </>
+        )}
+        {result.first_air_date && (
+          <>
+            <DataName>⏱ First Air Date</DataName>
+            <DataValue>{formatDate(result.first_air_date)}</DataValue>
+          </>
+        )}
+        {result.genres && (
+          <>
+            <DataName>🎞 Genres</DataName>
+            <DataValue>
+              {result.genres.map((genre, index) =>
+                index + 1 === result.genres.length
+                  ? genre.name
+                  : `${genre.name}, `
+              )}
+            </DataValue>
+          </>
+        )}
+        {result.number_of_episodes && (
+          <>
+            <DataName>📒 Seasons / Episodes</DataName>
+            <DataValue>
+              {result.number_of_seasons} / {result.number_of_episodes}
             </DataValue>
           </>
         )}
