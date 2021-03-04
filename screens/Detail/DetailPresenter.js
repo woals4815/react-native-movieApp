@@ -6,6 +6,7 @@ import styled from "styled-components/native";
 import Votes from "../../components/Votes";
 import { apiImage } from "../../api";
 import { formatDate } from "../../utils";
+import Link from "./Link";
 
 const BG = styled.Image`
   width: 100%;
@@ -50,7 +51,7 @@ const DataValue = styled.Text`
   font-weight: 500;
 `;
 
-export default ({ result, loading }) => (
+export default ({ result, loading, openBrowser }) => (
   <ScrollContainer
     loading={false}
     contentContainerStyle={{ paddingBottom: 80 }}
@@ -67,38 +68,44 @@ export default ({ result, loading }) => (
         </Container>
       </Header>
       <Data>
-        {result.overview && (
+        {result.overview ? (
           <>
-            <DataName>OverView</DataName>
+            <DataName>✍️ OverView</DataName>
             <DataValue>{result.overview}</DataValue>
           </>
-        )}
-        {loading && (
+        ) : null}
+        {loading ? (
           <ActivityIndicator style={{ marginTop: 30 }} color={"white"} />
-        )}
-        {result.spoken_languages && (
+        ) : null}
+        {result.spoken_languages ? (
           <>
-            <DataName>Language</DataName>
+            <DataName>👅 Language</DataName>
             <DataValue>
               {result.spoken_languages.map((lan) => `${lan.name}  `)}
             </DataValue>
           </>
-        )}
-        {result.status && (
+        ) : null}
+        {result.status ? (
           <>
             <DataName>📺 Status</DataName>
             <DataValue>{result.status}</DataValue>
           </>
-        )}
-        {result.first_air_date && (
+        ) : null}
+        {result.runtime ? (
+          <>
+            <DataName>🎞 Runtime</DataName>
+            <DataValue>{result.runtime} minutes</DataValue>
+          </>
+        ) : null}
+        {result.first_air_date ? (
           <>
             <DataName>⏱ First Air Date</DataName>
             <DataValue>{formatDate(result.first_air_date)}</DataValue>
           </>
-        )}
-        {result.genres && (
+        ) : null}
+        {result.genres ? (
           <>
-            <DataName>🎞 Genres</DataName>
+            <DataName>📚 Genres</DataName>
             <DataValue>
               {result.genres.map((genre, index) =>
                 index + 1 === result.genres.length
@@ -107,15 +114,42 @@ export default ({ result, loading }) => (
               )}
             </DataValue>
           </>
-        )}
-        {result.number_of_episodes && (
+        ) : null}
+        {result.number_of_episodes ? (
           <>
             <DataName>📒 Seasons / Episodes</DataName>
             <DataValue>
               {result.number_of_seasons} / {result.number_of_episodes}
             </DataValue>
           </>
-        )}
+        ) : null}
+        {result.imdb_id ? (
+          <>
+            <DataName>Links</DataName>
+            <Link
+              text={"IMDB Page"}
+              icon={"imdb"}
+              onPress={() =>
+                openBrowser(`https://www.imdb.com/title/${result.imdb_id}`)
+              }
+            />
+          </>
+        ) : null}
+        {result.videos.results?.length > 0 ? (
+          <>
+            <DataName>Videos</DataName>
+            {result.videos.results.map((video) => (
+              <Link
+                key={video.id}
+                text={video.name}
+                icon="youtube-play"
+                onPress={() =>
+                  openBrowser(`https://www.youtube.com/watch?v=${video.key}`)
+                }
+              />
+            ))}
+          </>
+        ) : null}
       </Data>
     </>
   </ScrollContainer>
