@@ -54,10 +54,10 @@ export default (props) => {
         },
       }}
     >
-      <Tabs.Screen name="Discovery" component={Fav} />
       <Tabs.Screen name="TV" component={Tv} />
       <Tabs.Screen name="Movies" component={Movies} />
       <Tabs.Screen name="Search" component={Search} />
+      <Tabs.Screen name="Discovery" component={Fav} />
     </Tabs.Navigator>
   );
 };
